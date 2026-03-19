@@ -25,8 +25,8 @@ param pertenece {i in INTERSECTIONS, j in PATHS} binary =
     if (j, i) in path_intersections then 1 else 0;
     #es (j, i) y no (i, j) porque viene dado como (PATHS, INTERSECTION)
 
-#param vecino {i in INTERSECTIONS, j in INTERSECTIONS} binary = 
-#    if (i, j) in intersection_neighborhood then 1 else 0;
+param vecino {i in INTERSECTIONS, j in INTERSECTIONS} binary = 
+    if (i, j) in intersection_neighborhood then 1 else 0;
 
 
 
@@ -67,5 +67,9 @@ subject to CaminoCapturado{j in PATHS}:
 
 #para el apartado b)
 #(r5) Que la distancia entre dos sensores sea mayor o igual de 300 metros
-#subject to DistanciaSeguridad{(i,j) in intersection_neighbourhood}:
+subject to DistanciaSeguridad{(i,j) in intersection_neighborhood}:
+	x[i] + x[j] <= 1;
+
+#alternativa:	
+#subject to DistanciaSeguridad{i in INTERSECTIONS, j in INTERSECTIONS: vecino[i,j] = 1}:
 #	x[i] + x[j] <= 1;
