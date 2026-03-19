@@ -1,0 +1,41 @@
+# Problema trivial para evaluar la restricción de 15 sensores como máximo y también la función objetivo: dado 19 intersecciones y 10 caminos, el modelo deberá escoger las 15 intersecciones de los caminos con mayor flujo.
+
+
+# Un total de 20 intersecciones
+set INTERSECTIONS := I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 I16 I17 I18 I19 I20 ;
+
+# Dejamos las restricciones de obligatorias/prohibidas vacías para dar libertad al optimizador
+set FIXED := ;
+set PROHIBITED := ;
+
+set PATHS := P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 ;
+
+# Cada camino es formado por una pareja
+# Se sensorizarán los 8 primeros caminos (P7 y P8 comparten I14)
+set path_intersections :=
+  P1  I1   P1  I2
+  P2  I3   P2  I4
+  P3  I5   P3  I6
+  P4  I7   P4  I8
+  P5  I9   P5  I10
+  P6  I11  P6  I12
+  P7  I13  P7  I14
+  P8  I14  P8  I15
+  P9  I16  P9  I17
+  P10 I18  P10 I19 ;
+
+# Los 8 primeros caminos tienen más flujo que los otros, por lo que el modelo los priorizará. El resultado debe ser 1600.
+param path_flow :=
+  P1  200
+  P2  200
+  P3  200
+  P4  200
+  P5  200
+  P6  200
+  P7  200
+  P8  200
+  P9  100
+  P10 100 ;
+
+# Tampoco hay vecindades
+set intersection_neighborhood := ;

@@ -1,0 +1,29 @@
+# Problema trivial para evaluar la restricción de las intersecciones prohibidas: todas las intersecciones son prohibidas excepto dos, y estas dos excepciones forman un camino
+# Un total de 15 intersecciones
+set INTERSECTIONS := I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 ;
+
+# P1 será el único camino que se sensorizará
+set PATHS := P1 P2 P3;
+
+
+set FIXED := ;
+
+# I1, I2 son las excepciones
+set PROHIBITED := I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 ;
+
+
+set path_intersections :=
+# El P1 pasa por las dos únicas intersecciones libres
+P1 I1   P1 I2  
+# El camino 2 pasará por 2 intersecciones prohibida, por lo que es imposible que se sensorice
+P2 I3   P2 I4  
+# El camino 3 tiene una intersección libre y otra prohibida, también es imposible que se sensorice
+P3 I1   P3 I5 ; 
+
+set intersection_neighborhood := ;
+
+# el resultado de la funcion objetivo deberia ser 100
+param path_flow :=
+P1 100
+P2 9999
+P3 9999 ;

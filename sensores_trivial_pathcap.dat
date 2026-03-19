@@ -1,0 +1,44 @@
+# Problema trivial para evaluar la restricción de camino capturado y la restricción COMO MÁXIMO 15 (no tiene que ser igual a 15): dado 31 intersecciones y 11 caminos, el modelo tiene que colocar 2 sensores en cada camino para maximizar el flujo capturado. Habrá un total de 14 sensores usados, ya que el que sobra no sirve para capturar a ningún camino más.
+
+# Total de 31 intersecciones
+set INTERSECTIONS := I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 I16 I17 I18 I19 I20 I21 I22 I23 I24 I25 I26 I27 I28 I29 I30 I31 ;
+
+# Libertad al modelo
+set FIXED := ;
+set PROHIBITED := ;
+
+# 11 caminos en total (10 tríos + 1 individual)
+set PATHS := P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11 ;
+
+
+set path_intersections :=
+  P1  I1   P1  I2   P1  I3
+  P2  I4   P2  I5   P2  I6
+  P3  I7   P3  I8   P3  I9
+  P4  I10  P4  I11  P4  I12
+  P5  I13  P5  I14  P5  I15
+  P6  I16  P6  I17  P6  I18
+  P7  I19  P7  I20  P7  I21
+  P8  I22  P8  I23  P8  I24
+  P9  I25  P9  I26  P9  I27
+  P10 I28  P10 I29  P10 I30
+  
+  # El camino formado por la única intersección sobrante. Imposible de sensorizar.
+  P11 I31 ;
+
+# El valor de la función objetivo deberia ser 700
+param path_flow :=
+  P1  100
+  P2  100
+  P3  100
+  P4  100
+  P5  100
+  P6  100
+  P7  100
+  P8  100
+  P9  100
+  P10 100
+  P11 9999 ;
+
+
+set intersection_neighborhood := ;

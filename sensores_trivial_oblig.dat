@@ -1,0 +1,37 @@
+# Problema trivial para evaluar la restricción de las intersecciones obligatorias: 15 intersecciones obligatorias y 1 intersección libre
+
+
+set INTERSECTIONS := I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 I16;
+
+# la I16 es la libre
+set FIXED := I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 ;
+
+set PROHIBITED := ;
+
+# Definimos 8 caminos formados solo por parejas de intersecciones. Todos los caminos deberán estar sensorizados excepto P8, que solo tendrá una intersección (I15) con sensor.
+set PATHS := P1 P2 P3 P4 P5 P6 P7 P8;
+
+set path_intersections :=
+  P1 I1   P1 I2
+  P2 I3   P2 I4
+  P3 I5   P3 I6
+  P4 I7   P4 I8
+  P5 I9   P5 I10
+  P6 I11  P6 I12
+  P7 I13  P7 I14 
+  P8 I15  P8 I16 ;
+
+# El valor de la función objetivo debe ser 700
+# Si da más de 700, la implementación de la restricción de Fixed será incorrecto
+param path_flow :=
+  P1 100
+  P2 100
+  P3 100
+  P4 100
+  P5 100
+  P6 100
+  P7 100 
+  P8 9999 ;
+
+# De momento nos da igual las vecindades
+set intersection_neighborhood := ;
