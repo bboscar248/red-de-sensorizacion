@@ -1,4 +1,4 @@
-# Problema trivial para evaluar la restricción de camino capturado y la restricción COMO MÁXIMO 15 (no tiene que ser igual a 15): dado 31 intersecciones y 11 caminos, el modelo tiene que colocar 2 sensores en cada camino para maximizar el flujo capturado. Habrá un total de 14 sensores usados, ya que el que sobra no sirve para capturar a ningún camino más.
+# Problema trivial para evaluar la restricción de camino capturado: dado 31 intersecciones y 11 caminos, el modelo tiene que colocar 2 sensores en cada camino para maximizar el flujo capturado. Habrá un total de 14 sensores usados, ya que el que sobra no sirve para capturar a ningún camino más.
 
 # Total de 31 intersecciones
 set INTERSECTIONS := I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 I13 I14 I15 I16 I17 I18 I19 I20 I21 I22 I23 I24 I25 I26 I27 I28 I29 I30 I31 ;
