@@ -1,0 +1,63 @@
+# =========================================================
+#  VALIDACIÓN INCREMENTAL DEL MODELO - PROBLEMAS TRIVIALES
+# =========================================================
+
+# --- Trivial 1: Función objetivo + límite de sensores (r1) ---
+reset;
+option show_stats 0;
+option times 0;
+model sensores_eff.mod;
+data sensores_trivial_15sens.dat;
+option solver cplex;
+solve;
+display FlujoCapturado;
+display x;
+display y;
+
+# --- Trivial 2: Camino capturado (r4) ---
+reset;
+option show_stats 0;
+option times 0;
+model sensores_eff.mod;
+data sensores_trivial_pathcap.dat;
+option solver cplex;
+solve;
+display FlujoCapturado;
+display x;
+display y;
+
+# --- Trivial 3: Intersecciones obligatorias (r2) ---
+reset;
+option show_stats 0;
+option times 0;
+model sensores_eff.mod;
+data sensores_trivial_oblig.dat;
+option solver cplex;
+solve;
+display FlujoCapturado;
+display x;
+display y;
+
+# --- Trivial 4: Intersecciones prohibidas (r3) ---
+reset;
+option show_stats 0;
+option times 0;
+model sensores_eff.mod;
+data sensores_trivial_proh.dat;
+option solver cplex;
+solve;
+display FlujoCapturado;
+display x;
+display y;
+
+# --- Trivial 5: Distancia de seguridad entre sensores (r5) ---
+reset;
+option show_stats 0;
+option times 0;
+model sensores_eff.mod;
+data sensores_trivial_vecin.dat;
+option solver cplex;
+solve;
+display FlujoCapturado;
+display x;
+display y;

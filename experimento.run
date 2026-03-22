@@ -1,0 +1,21 @@
+reset;
+print "--- PROBANDO MODELO EFICIENTE ---";
+model sensores_eff.mod;
+data sensores.dat;
+option solver cplex;
+option show_stats 1;
+option times 1;
+solve;
+display _ampl_time;
+display _solve_time;
+
+reset;
+print "--- PROBANDO MODELO INEFICIENTE ---";
+model sensores_inef.mod;
+data sensores.dat;
+option solver cplex;
+option show_stats 1;
+option times 1;
+solve;
+display _ampl_time;
+display _solve_time;

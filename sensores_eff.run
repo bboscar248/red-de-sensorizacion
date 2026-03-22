@@ -1,0 +1,21 @@
+# Reset previously commands in AMPL
+reset;
+option show_stats 0;
+option times 0;
+
+# Model Load
+model sensores_eff.mod;
+
+# Data Load
+data sensores.dat;
+
+# Selection of the solver: CPLEX
+option solver cplex;
+
+#Solve the problem
+solve;
+
+# Show the obtained results
+display FlujoCapturado;
+display x;
+display y;

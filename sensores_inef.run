@@ -1,8 +1,10 @@
 # Reset previously commands in AMPL
 reset;
+option show_stats 0;
+option times 0;
 
 # Model Load
-model sensores.mod;
+model sensores_inef.mod;
 
 # Data Load
 data sensores.dat;

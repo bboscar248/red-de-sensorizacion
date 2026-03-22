@@ -1,44 +1,37 @@
-# Problema trivial para evaluar la restricción de vecindades: sea 12 intersecciones, donde 10 de ellas son vecinas dos a dos y 2 no tienen ninguna vecina. Luego tenemos 6 caminos formados por parejas disyuntas, donde 1 de esos caminos es formada por las dos intersecciones sin vecinos. El modelo solo puede sensorizar ese camino que solo tiene las dos intersecciones marginadas.
+set INTERSECTIONS := 1 2 3 4 5 6 7 8 9 10 11 12 ;
 
-set INTERSECTIONS := I1 I2 I3 I4 I5 I6 I7 I8 I9 I10 I11 I12 ;
-
-# Sin otras restricciones.
 set FIXED := ;
 set PROHIBITED := ;
 
-# 6 caminos en total (parejas disyuntas)
-set PATHS := P1 P2 P3 P4 P5 P6 ;
-
+set PATHS := 1 2 3 4 5 6 ;
 
 set path_intersections :=
   # Caminos de las intersecciones vecinas
-  P1 I1   P1 I2
-  P2 I3   P2 I4
-  P3 I5   P3 I6
-  P4 I7   P4 I8
-  P5 I9   P5 I10
-  
-  # P6 es el único sensorizable
-  P6 I11  P6 I12 ;
+  1 1   1 2
+  2 3   2 4
+  3 5   3 6
+  4 7   4 8
+  5 9   5 10
 
-# El resultado de la función objetivo debe ser 100.
+  # Camino 6 es el unico sensorizable
+  6 11  6 12 ;
+
 param path_flow :=
-  P1 9999
-  P2 9999
-  P3 9999
-  P4 9999
-  P5 9999
-  P6 100 ;
+  1 9999
+  2 9999
+  3 9999
+  4 9999
+  5 9999
+  6 100 ;
 
-# Vecindades, I11 y I12 no tienen ninguna vecina
+# Vecindades, 11 y 12 no tienen ninguna vecina
 set intersection_neighborhood :=
-  # Conectamos las 10 primeras intersecciones dos a dos
-  I1 I2   I1 I3   I1 I4   I1 I5   I1 I6   I1 I7   I1 I8   I1 I9   I1 I10
-  I2 I3   I2 I4   I2 I5   I2 I6   I2 I7   I2 I8   I2 I9   I2 I10
-  I3 I4   I3 I5   I3 I6   I3 I7   I3 I8   I3 I9   I3 I10
-  I4 I5   I4 I6   I4 I7   I4 I8   I4 I9   I4 I10
-  I5 I6   I5 I7   I5 I8   I5 I9   I5 I10
-  I6 I7   I6 I8   I6 I9   I6 I10
-  I7 I8   I7 I9   I7 I10
-  I8 I9   I8 I10
-  I9 I10 ;
+  1 2   1 3   1 4   1 5   1 6   1 7   1 8   1 9   1 10
+  2 3   2 4   2 5   2 6   2 7   2 8   2 9   2 10
+  3 4   3 5   3 6   3 7   3 8   3 9   3 10
+  4 5   4 6   4 7   4 8   4 9   4 10
+  5 6   5 7   5 8   5 9   5 10
+  6 7   6 8   6 9   6 10
+  7 8   7 9   7 10
+  8 9   8 10
+  9 10 ;
